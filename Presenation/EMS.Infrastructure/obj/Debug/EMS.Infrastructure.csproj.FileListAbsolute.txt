@@ -1,0 +1,5 @@
+D:\Repos\EMS\Presenation\EMS.Infrastructure\bin\Debug\EMS.Infrastructure.dll
+D:\Repos\EMS\Presenation\EMS.Infrastructure\bin\Debug\EMS.Infrastructure.pdb
+D:\Repos\EMS\Presenation\EMS.Infrastructure\obj\Debug\EMS.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Repos\EMS\Presenation\EMS.Infrastructure\obj\Debug\EMS.Infrastructure.dll
+D:\Repos\EMS\Presenation\EMS.Infrastructure\obj\Debug\EMS.Infrastructure.pdb

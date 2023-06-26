@@ -1,0 +1,73 @@
+﻿@model EMS.Core.Dtos.User.SigninUserDto
+@{
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+<title>EMS | Sign In</title>
+<div class="login login-4 wizard d-flex flex-column flex-lg-row flex-column-fluid">
+    <!--begin::Content-->
+    <div class="login-container order-2 order-lg-1 d-flex flex-center flex-row-fluid px-7 pt-lg-0 pb-lg-0 pt-4 pb-6 bg-white">
+        <!--begin::Wrapper-->
+        <div class="login-content d-flex flex-column pt-lg-0 pt-12">
+            <!--begin::Logo-->
+            <a href="#" class="login-logo pb-xl-20 pb-15">
+                @*<img src="https://unicorn-cdn.b-cdn.net/4dc0143c-83ac-4147-be26-e93220077334/-/crop/372x232/75,0/-/preview/" class="max-h-70px" alt="" />*@
+                <img src="https://wapelsoftware.com/images/header/logo.png" class="max-h-70px" alt="" />
+            </a>
+            <!--end::Logo-->
+            <!--begin::Signin-->
+            <div class="login-form">
+                <!--begin::Form-->
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", @id = "kt_login_singin_form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <!--begin::Title-->
+                    <div class="pb-5 pb-lg-15">
+                        <h3 class="font-weight-bolder text-dark font-size-h2 font-size-h1-lg">Sign In</h3>
+                        <div class="text-muted font-weight-bold font-size-h4">
+                            New Here?
+                            @Html.ActionLink("Create Account", "Register", "Account", new { area = "" }, new { @class = "text-primary font-weight-bolder" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--begin::Title-->
+                    <!--begin::Form group-->
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control form-control-solid h-auto py-7 px-6 border-0 rounded-lg font-size-h6", @placeholder = "Email", @name = "Email" })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Form group-->
+                    <!--begin::Form group-->
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="form-group">
+                                @Html.PasswordFor(model => model.Password, new { @class = "form-control form-control-solid h-auto py-7 px-6 border-0 rounded-lg font-size-h6", @placeholder = "Password", @name = "password" })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Form group-->
+                    <!--begin::Action-->
+                    <div class="pb-lg-0 pb-5">
+                        <button type="submit" id="kt_login_singin_form_submit_button" class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3">Sign In</button>
+                    </div>
+                    <!--end::Action-->
+                }
+                <!--end::Form-->
+            </div>
+            <!--end::Signin-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--begin::Content-->
+</div>
