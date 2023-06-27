@@ -104,7 +104,18 @@ namespace EMS.Data.Repositories
 
         public async System.Threading.Tasks.Task UpdateAsync(User user)
         {
-            await _context.SingleUpdateAsync(user);
+            _context.Users.Attach(user);
+
+            _context.Entry(user).State = EntityState.Modified;
+
+            _context.Entry(user).Property(x => x.PasswordHash).IsModified = false;
+            _context.Entry(user).Property(x => x.SecurityStamp).IsModified = false;
+
+            //await _context.Users.upd(user);
+            //_context.Entry(user).Property(x => x.PasswordHash).IsModified = false;
+            await _context.SaveChangesAsync();
+
+            //await _context.SingleUpdateAsync(user);
         }
 
         public bool UserInRole(string UserId, string RoleId)
