@@ -147,8 +147,6 @@ def build_symbol_files():
     w = SYM_W + pad * 2
     h = SYM_H + pad * 2
     for name, v in VARIANTS.items():
-        if name == "reverse":
-            continue
         frag = symbol_placed(pad, pad, SYM_H, v["mark"], v["dot"])
         write_svg(f"logos/svg/morabh-symbol-{name}.svg", w, h, frag)
     # default = color
