@@ -16,6 +16,7 @@ from textpath import shape_glyphs, shape_bounds
 HERE = os.path.dirname(os.path.abspath(__file__))
 BRAND = os.path.dirname(HERE)
 FONTS = os.path.join(BRAND, "fonts")
+OUT = BRAND  # asset output root; themed builds point this elsewhere
 
 MANROPE = os.path.join(FONTS, "Manrope.ttf")
 CAIRO = os.path.join(FONTS, "Cairo.ttf")
@@ -110,7 +111,7 @@ def wm_metrics(which, size):
 
 # ---------------------------------------------------------------- io helpers
 def write_svg(rel, w, h, content, bg=None):
-    path = os.path.join(BRAND, rel)
+    path = os.path.join(OUT, rel)
     os.makedirs(os.path.dirname(path), exist_ok=True)
     bg_rect = f'<rect width="{w:.0f}" height="{h:.0f}" fill="{bg}"/>' if bg else ""
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w:.0f} {h:.0f}" '
@@ -121,8 +122,8 @@ def write_svg(rel, w, h, content, bg=None):
 
 
 def render(svg_rel, png_rel, w=None, h=None):
-    svg = os.path.join(BRAND, svg_rel)
-    png = os.path.join(BRAND, png_rel)
+    svg = os.path.join(OUT, svg_rel)
+    png = os.path.join(OUT, png_rel)
     os.makedirs(os.path.dirname(png), exist_ok=True)
     cmd = ["rsvg-convert", svg, "-o", png]
     if w:
@@ -250,7 +251,7 @@ def build_wordmark_files():
 
 
 def export_logo_pngs():
-    svg_dir = os.path.join(BRAND, "logos", "svg")
+    svg_dir = os.path.join(OUT, "logos", "svg")
     for f in sorted(os.listdir(svg_dir)):
         if not f.endswith(".svg"):
             continue
@@ -317,10 +318,10 @@ def build_favicons():
     for s in (16, 32, 48, 180, 192, 512):
         render("favicon/favicon.svg", f"favicon/favicon-{s}x{s}.png", w=s, h=s)
     subprocess.run(["convert",
-                    os.path.join(BRAND, "favicon/favicon-16x16.png"),
-                    os.path.join(BRAND, "favicon/favicon-32x32.png"),
-                    os.path.join(BRAND, "favicon/favicon-48x48.png"),
-                    os.path.join(BRAND, "favicon/favicon.ico")], check=True)
+                    os.path.join(OUT, "favicon/favicon-16x16.png"),
+                    os.path.join(OUT, "favicon/favicon-32x32.png"),
+                    os.path.join(OUT, "favicon/favicon-48x48.png"),
+                    os.path.join(OUT, "favicon/favicon.ico")], check=True)
     # maskable PWA icon: symbol within 80% safe-zone circle, full-bleed bg
     mw = 512 * 0.56
     mh = mw * (SYM_H / SYM_W)
@@ -329,19 +330,19 @@ def build_favicons():
     write_svg("favicon/maskable.svg", 512, 512, frag)
     render("favicon/maskable.svg", "favicon/maskable-512x512.png", w=512, h=512)
     render("favicon/maskable.svg", "favicon/maskable-192x192.png", w=192, h=192)
-    with open(os.path.join(BRAND, "favicon/site.webmanifest"), "w") as f:
-        f.write('''{
+    with open(os.path.join(OUT, "favicon/site.webmanifest"), "w") as f:
+        f.write(f'''{{
   "name": "Morabh \\u2014 \\u0645\\u064f\\u0631\\u0627\\u0628\\u0650\\u062d",
   "short_name": "Morabh",
   "icons": [
-    { "src": "/favicon-192x192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/favicon-512x512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "/maskable-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {{ "src": "/favicon-192x192.png", "sizes": "192x192", "type": "image/png" }},
+    {{ "src": "/favicon-512x512.png", "sizes": "512x512", "type": "image/png" }},
+    {{ "src": "/maskable-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }}
   ],
-  "theme_color": "#0C7C5F",
-  "background_color": "#F4FAF7",
+  "theme_color": "{GREEN}",
+  "background_color": "{COTTON}",
   "display": "standalone"
-}
+}}
 ''')
 
 
