@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Morabh — splash previews</title>
+<style>body{margin:0;background:#E8EBF2;display:flex;gap:24px;align-items:center;
+justify-content:center;min-height:100vh;flex-wrap:wrap;padding:24px}
+.phone{width:min(300px,80vw);aspect-ratio:390/844;border-radius:36px;overflow:hidden;
+box-shadow:0 24px 60px rgba(13,27,38,.35);border:9px solid #0D1B26;background:#fff}
+.phone img{width:100%;height:100%;display:block}
+p{width:100%;text-align:center;font:600 14px system-ui;color:#4B5563;margin:0}</style></head>
+<body>
+<p>Click any phone to replay</p>
+<div class="phone"><img src="light/splash-symbol-only-animated.svg" alt="light symbol"></div>
+<div class="phone"><img src="light/splash-full-animated.svg" alt="light full"></div>
+<div class="phone"><img src="dark/splash-symbol-only-animated.svg" alt="dark symbol"></div>
+<div class="phone"><img src="dark/splash-full-animated.svg" alt="dark full"></div>
+<script>document.querySelectorAll("img").forEach(m=>m.onclick=e=>{const s=e.target.src;e.target.src="";e.target.src=s})</script>
+</body></html>
