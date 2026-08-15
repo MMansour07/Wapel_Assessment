@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" width="390" height="844"><style>
+    .ring { stroke-dasharray:439.8; stroke-dashoffset:439.8;
+             animation: dr 0.7s cubic-bezier(.55,0,.35,1) 0.2s both; }
+    .tail { stroke-dasharray:86.6; stroke-dashoffset:86.6;
+             animation: dt 0.35s ease-out 0.8s both; }
+    .drop { animation: fall 0.5s cubic-bezier(.34,1.56,.64,1) 1.15s both;
+             transform-box: fill-box; transform-origin: center; }
+    @keyframes dr { to { stroke-dashoffset:0; } }
+    @keyframes dt { to { stroke-dashoffset:0; } }
+    @keyframes fall { from { opacity:0; transform: translateY(-30px) scale(.5); }
+                       to { opacity:1; transform:none; } }
+    .loader { opacity:0; animation: fadein .5s ease-out 2.0s forwards; }
+    .loader circle { animation: pulse 1.2s ease-in-out infinite; }
+    @keyframes fadein { to { opacity:1; } }
+    @keyframes pulse { 0%,100% { opacity:.3; } 50% { opacity:1; } }
+    @media (prefers-reduced-motion: reduce) {
+      .ring,.tail { animation:none; stroke-dashoffset:0; }
+      .drop,.loader,.loader circle { animation:none; opacity:1; }
+      
+    }</style><rect width="390" height="844" fill="#0D1B26"/><g><g transform="translate(48.19 252.78) scale(0.53191)"><g fill="none" stroke="#FFFFFF" stroke-width="48" stroke-linecap="round"><circle class="ring" cx="276" cy="190" r="70"/><path class="tail" d="M 232 244 L 222 330"/></g><circle class="drop" cx="220" cy="348" r="30" fill="#FFFFFF"/></g></g><g class="loader"><circle cx="179" cy="747" r="4" fill="#FFFFFF" style="animation-delay:0.0s" opacity="0.85"/><circle cx="195" cy="747" r="4" fill="#FFFFFF" style="animation-delay:0.2s" opacity="0.85"/><circle cx="211" cy="747" r="4" fill="#FFFFFF" style="animation-delay:0.4s" opacity="0.85"/></g></svg>

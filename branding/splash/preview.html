@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Morabh — Meem Smile splash</title>
+<style>body{margin:0;background:#E8EBF2;display:flex;gap:28px;align-items:center;
+justify-content:center;min-height:100vh;flex-wrap:wrap;padding:24px}
+.phone{width:min(320px,86vw);aspect-ratio:390/844;border-radius:38px;overflow:hidden;
+box-shadow:0 24px 60px rgba(13,27,38,.35);border:9px solid #0D1B26;background:#fff}
+.web{width:min(720px,94vw);aspect-ratio:1440/900;border-radius:14px;overflow:hidden;
+box-shadow:0 24px 60px rgba(13,27,38,.3);border:1px solid #c8d0dc;background:#fff}
+img{width:100%;height:100%;display:block}
+p{width:100%;text-align:center;font:600 14px system-ui;color:#4B5563;margin:0}</style></head>
+<body>
+<p>Click any preview to replay — Symbol → مُرابِح → Morabh</p>
+<div class="phone"><img src="light/morabh-splash-animated-mobile.svg"></div>
+<div class="phone"><img src="dark/morabh-splash-animated-mobile.svg"></div>
+<div class="web"><img src="light/morabh-splash-animated-web.svg"></div>
+<div class="web"><img src="dark/morabh-splash-animated-web.svg"></div>
+<script>document.querySelectorAll("img").forEach(m=>m.onclick=e=>{const s=e.target.src;e.target.src="";e.target.src=s})</script>
+</body></html>
